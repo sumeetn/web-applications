@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.smn</groupId>
+	<artifactId>puzzles</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<!-- <name>solve puzzles</name>
+	<description>puzzle solver</description> -->
+	<properties>
+		<!-- <releaseCandidate>1</releaseCandidate> -->
+		<jdk.version>1.7</jdk.version>
+	</properties>
+	<modules>
+		<module>puzzle-solution-algo</module>
+		<module>puzzle-rest-api</module>
+	</modules>
+	<repositories>
+		<repository>
+			<id>org.apache.tomcat</id>
+			<url>http://repo2.maven.org/maven2/org/apache/tomcat/</url>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<webapps>
+						<webapp>
+							<contextPath>/puzzle-rest-api</contextPath>
+							<groupId>com.smn</groupId>
+							<artifactId>puzzle-rest-api</artifactId>
+							<version>1.0-SNAPSHOT</version>
+							<type>war</type>
+							<asWebapp>true</asWebapp>
+						</webapp>
+					</webapps>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
