@@ -10,7 +10,7 @@ Pre-requisite
 Steps to setup project
 ======================
 1. create a directory, which will be referred as PROJECT_HOME
-2. cd <PROJECT_HOME>
+2. cd \<PROJECT_HOME\>
 3. git clone -b master https://github.com/sumeetn/web-applications.git
 4. cd <PROJECT_HOME>/web-applications/puzzles
 5. mvn clean install
@@ -20,3 +20,7 @@ Steps to setup project
 
 ![rest request](https://github.com/sumeetn/web-applications/blob/master/img/postman_rest_request.PNG)
 
+
+TODO:
+=======================================
+Maven EAR
