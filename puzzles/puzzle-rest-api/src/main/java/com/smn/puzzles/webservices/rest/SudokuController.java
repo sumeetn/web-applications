@@ -48,12 +48,13 @@ public class SudokuController {
 	private ModelAndView solveProblem(String problem) {
 		String sMessage;
 		SudokuSolver solver = new BackTrackAlgorithm();
+		String jsonField = "";
 		try {
 			logger.debug("problem statement: " + problem);
 			solver.initializeGrid(problem);
-			solver.solve();
+			jsonField = solver.solve() ? SOLUTION_FIELD : ERROR_FIELD;
 			sMessage = solver.getResult();
-			logger.debug("result: " + sMessage);
+			logger.debug(jsonField+": " + sMessage);
 
 		} catch (InvalidDataException e) {
 			sMessage = "Error - InvalidDataException";
@@ -66,7 +67,7 @@ public class SudokuController {
 			return createErrorResponse(e.getMessage());
 		}
 
-		return new ModelAndView(jsonView, SOLUTION_FIELD, sMessage);
+		return new ModelAndView(jsonView, jsonField, sMessage);
 	}
 
 	/**

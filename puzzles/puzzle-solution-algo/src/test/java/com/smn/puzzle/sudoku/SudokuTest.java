@@ -41,9 +41,7 @@ public class SudokuTest {
 		logger.debug("elements size " + problem.split(",").length);
 		SudokuSolver solver = new BackTrackAlgorithm();
 		try {
-
 			solver.initializeGrid(problem);
-
 			solver.printGrid();
 			if (solver.solve()) {
 				assertTrue(false);
@@ -52,6 +50,27 @@ public class SudokuTest {
 			}
 		} catch (InvalidDataException e) {
 			assertTrue(true);
+		} catch (InvalidCharacterException e) {
+			fail("InvalidCharacterException " + e.getMessage());
+		} catch (InsufficientDataException e) {
+			fail("InsufficientDataException " + e.getMessage());
+		}
+	}
+
+	@Test
+	public void testCannotBeSolved() {
+		String problem = "x,x,9,x,2,8,7,x,x,8,x,6,x,x,4,x,x,5,x,x,3,x,x,x,x,x,4,6,x,x,x,x,x,x,x,x,x,2,x,7,1,3,4,5,x,x,x,x,x,x,x,x,x,2,3,x,x,x,x,x,5,x,x,9,x,x,4,x,x,8,x,7,x,x,1,2,5,x,3,x,x";
+		logger.debug("elements size " + problem.split(",").length);
+		SudokuSolver solver = new BackTrackAlgorithm();
+		try {
+			solver.initializeGrid(problem);
+			if (solver.solve()) {
+				assertTrue(false);
+			} else {
+				assertTrue(true);
+			}
+		} catch (InvalidDataException e) {
+			fail("InvalidDataException " + e.getMessage());
 		} catch (InvalidCharacterException e) {
 			fail("InvalidCharacterException " + e.getMessage());
 		} catch (InsufficientDataException e) {
